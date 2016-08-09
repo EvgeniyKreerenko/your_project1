@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Restaurant.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 main">
+            <h3 class="page-header">User Manager</h3>
+            <button class="btn btn-default">
+                @Html.ActionLink("Create New", "Create")
+            </button>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>UserName</th>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>Address</th>
+                            <th>City</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Username)</td>
+                                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                                <td>@Html.DisplayNameFor(model => model.LastName)</td>
+                                <td>@Html.DisplayNameFor(model => model.Address)</td>
+                                <td>@Html.DisplayNameFor(model => model.City)</td>
+                                <td>@Html.DisplayNameFor(model => model.Phone)</td>
+                                <td>@Html.DisplayNameFor(model => model.Email)</td>
+                                <td>
+                                    <button class="btn btn-default">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.OrderId })
+                                    </button>
+                                    <button class="btn btn-default">
+                                        @Html.ActionLink("Details", "Details", new { id = item.OrderId })
+                                    </button>
+                                    <button class="btn btn-default">
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.OrderId })
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@model Restaurant.Models.RestItem
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-6 center-block">
+            <h3 class="page-header text-center">Create restaurant menu</h3>
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true)                
+
+                <div class="form-group">
+                    <b class="control-label col-md-4">Main Menu</b>
+                    <div class="col-sm-6 col-md-6">
+                        @Html.DropDownList("RestMenuId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.RestMenuId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b class="control-label col-md-4">Title</b>
+                    <div class="col-sm-6 col-md-6">
+                        @Html.EditorFor(model => model.Title)
+                        @Html.ValidationMessageFor(model => model.Title)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b class="control-label col-md-4">Price</b>
+                    <div class="col-sm-6 col-md-6">
+                        @Html.EditorFor(model => model.Price)
+                        @Html.ValidationMessageFor(model => model.Price)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b class="control-label col-md-4">Item Art URL</b>
+                    <div class="col-sm-6 col-md-6">
+                        @Html.EditorFor(model => model.RestItemArtUrl)
+                        @Html.ValidationMessageFor(model => model.RestItemArtUrl)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                        <button class="btn btn-default">
+                            @Html.ActionLink("Back to List", "Index")
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

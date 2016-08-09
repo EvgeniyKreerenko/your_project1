@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Restaurant.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 main">
+            <h3 class="page-header">Order History</h3>
+            <button class="btn btn-default">
+                @Html.ActionLink("Create New", "Create")
+            </button>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Order Id</th>
+                            <th>Username</th>
+                            <th>Title</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Order Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Order.OrderId)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Order.Username)</td>
+                                <td>@Html.DisplayFor(modelItem => item.RestItem.Title)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Quantity)</td>
+                                <td>@Html.DisplayFor(modelItem => item.UnitPrice)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Order.OrderDate)</td>                                
+                                <td>
+                                    <button class="btn btn-default">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.OrderDetailId })
+                                    </button>
+                                    <button class="btn btn-default">
+                                        @Html.ActionLink("Details", "Details", new { id = item.OrderDetailId })
+                                    </button>
+                                    <button class="btn btn-default">
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.OrderDetailId })
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

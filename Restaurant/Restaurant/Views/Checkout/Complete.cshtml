@@ -1,0 +1,19 @@
+﻿@model int
+@{
+    ViewBag.Title = "Checkout Complete";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 main">
+            <h3 class="page-header">Checkout Complete</h3>
+            <p>Thanks for your order! Your order number is: @Model</p>
+            <p>
+                How about shopping for some more food in our
+                <button class="btn btn-default">
+                    @Html.ActionLink("store", "Index", "Home")
+                </button>
+            </p>
+        </div>
+    </div>
+</div>

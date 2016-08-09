@@ -1,0 +1,74 @@
+﻿@model Restaurant.Models.OrderDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@using (Html.BeginForm())
+{
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6 col-md-6 center-block">
+                <h3 class="page-header text-center">Details</h3>
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <b class="control-label col-md-4">Order Id</b>
+                        <div class="col-sm-6 col-md-6">
+                            @Html.DisplayFor(model => model.Order.OrderId)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <b class="control-label col-md-4">Username</b>
+                        <div class="col-sm-6 col-md-6">
+                            @Html.DisplayFor(model => model.Order.Username)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <b class="control-label col-md-4">Title</b>
+                        <div class="col-sm-6 col-md-6">
+                            @Html.DisplayFor(model => model.RestItem.Title)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <b class="control-label col-md-4">Quantity</b>
+                        <div class="col-sm-6 col-md-6">
+                            @Html.DisplayFor(model => model.Quantity)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <b class="control-label col-md-4">Price</b>
+                        <div class="col-sm-6 col-md-6">
+                            @Html.DisplayFor(model => model.UnitPrice)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <b class="control-label col-md-4">Order Date</b>
+                        <div class="col-sm-6 col-md-6">
+                            @Html.DisplayFor(model => model.Order.OrderDate)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-4 col-md-10">
+                            <button class="btn btn-default">
+                                @Html.ActionLink("Edit", "Edit", new { id = Model.OrderDetailId })
+                            </button>
+                            <button class="btn btn-default">
+                                @Html.ActionLink("Back to List", "Index")
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Restaurant.Models.RestMenu>
+
+
+
+
+<div class="col-sm-3 col-md-2 sidebar">
+    <h3 class="page-header">Restaurant Menu</h3>
+    <ul class="nav nav-sidebar" id="categories">
+        @foreach (var restMenu in Model)
+        {
+            <li>@Html.ActionLink(restMenu.Name, "Browse", "Store", new { RestMenu = restMenu.Name }, null)</li>
+        }
+    </ul>
+</div>

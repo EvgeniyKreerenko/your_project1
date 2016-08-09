@@ -1,0 +1,26 @@
+﻿@model Restaurant.Models.RestMenu
+@{
+    ViewBag.Title = "Browse Menu Positions";
+}
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 main center-block">
+            <h3 class="page-header text-center">@Model.Name</h3>
+            <div class="row text-center header ">
+                @foreach (var restItem in Model.RestItems)
+                {
+                    <div class="col-sm-4 col-md-4 center-block text-center">
+                        <a class="center-block" href="@Url.Action("Details", "Store", new { id = restItem.RestItemId })">
+                            <div class="text-center">
+                                <img id="middle" alt="@restItem.Title" src="@restItem.RestItemArtUrl" />
+                            </div>
+                            <span>@restItem.Title</span>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

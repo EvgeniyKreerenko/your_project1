@@ -1,0 +1,82 @@
+﻿@model Restaurant.ViewModels.ShoppingCartViewModel
+@{
+    ViewBag.Title = "Shopping Cart";
+}
+<script src="/Scripts/jquery-1.10.2.min.js"
+        type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        // Document.ready -> link up remove event handler
+        $(".RemoveLink").click(function () {
+            // Get the id from the link
+            var recordToDelete = $(this).attr("data-id");
+            if (recordToDelete != '') {
+                // Perform the ajax post
+                $.post("/ShoppingCart/RemoveFromCart", { "id": recordToDelete },
+                    function (data) {
+                        // Successful requests get here Update the page elements
+                        if (data.ItemCount == 0) {
+                            $('#row-' + data.DeleteId).fadeOut('slow');
+                        }
+                        else {
+                            $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                        }
+                        $('#cart-total').text(data.CartTotal);
+                        $('#update-message').text(data.Message);
+                        $('#cart-status').text('Cart (' + data.CartCount + ')');
+                    });
+            }
+        });
+    });
+</script>
+
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 main">
+            <h3 class="page-header">Review your cart:</h3>
+            <button class="btn btn-default">
+                @Html.ActionLink("Checkout>>", "AddressAndPayment", "Checkout")
+            </button>
+            <!--<h2 class="sub-header">Section title</h2>-->
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Price (each)</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CartItems)
+                        {
+                            <tr id="row-@item.RecordId">
+                                <td>@Html.ActionLink(item.RestItem.Title, "Details", "Store", new { id = item.RestItemId }, null)</td>
+                                <td>@item.RestItem.Price</td>
+                                <td id="item-count-@item.RecordId">@item.Count</td>
+                                <td>
+                                    <a href="#" class="RemoveLink btn btn-default" 
+                                       role="button"
+                                       data-id="@item.RecordId">
+                                       Remove from cart
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td>Total</td>
+                            <td></td>
+                            <td></td>
+                            <td id="cart-total">
+                                @Model.CartTotal
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿@model Restaurant.Models.RestItem
+
+@{
+    ViewBag.Title = "RestItem - " + Model.Title;
+}
+
+<div class="container-fluid">
+    <div class="row">
+            <div class="col-sm-4 col-md-4 center-block text-center">
+                <h3 class="page-header">@Model.Title</h3>             
+                    <img alt="@Model.Title" src="@Model.RestItemArtUrl" />
+                    <p>
+                        Price: @String.Format("{0:F}", Model.Price)
+                    </p>
+                    <button class="btn btn-default">
+                        @Html.ActionLink("Add to cart", "AddToCart", "ShoppingCart", new { id = Model.RestItemId }, "")
+                    </button>                
+            </div>        
+    </div>
+</div>

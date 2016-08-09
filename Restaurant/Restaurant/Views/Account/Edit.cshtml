@@ -1,0 +1,40 @@
+﻿@model Restaurant.Models.ApplicationUser
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h4>Edit profile</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        @Html.ValidationSummary(true, "")
+        <div>
+            <p>FirstName: @Html.EditorFor(model => model.FirstName)</p>
+        </div>
+        <div>
+            <p>LastName: @Html.EditorFor(model => model.LastName)</p>
+        </div>
+        <div>
+            <p>Address: @Html.EditorFor(model => model.Address)</p>
+        </div>
+        <div>
+            <p>City: @Html.EditorFor(model => model.City)</p>
+        </div>
+        <div>
+            <p>Phone: @Html.EditorFor(Model=>Model.Phone)</p>
+        </div>      
+
+        <div>
+            <div>
+                <input type="submit" value="Save" />
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

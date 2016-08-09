@@ -1,0 +1,52 @@
+﻿@model Restaurant.Models.RestItem
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6 col-md-6 center-block">
+            <h3 class="page-header text-center">Delete</h3>
+            <h4 class="sub-header text-center">Are you sure you want to delete this?</h4>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <b class="control-label col-md-4">Main Menu</b>
+                    <div class="col-sm-6 col-md-6">
+                        @Html.DisplayFor(model => model.RestMenu.Name)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b class="control-label col-md-4">Title</b>
+                    <div class="col-sm-6 col-md-6">
+                        @Html.DisplayFor(model => model.Title)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b class="control-label col-md-4">Price</b>
+                    <div class="col-sm-6 col-md-6">
+                        @Html.DisplayFor(model => model.Price)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b class="control-label col-md-4">Item Art URL</b>
+                    <div class="col-sm-6 col-md-6">
+                        @Html.DisplayFor(model => model.RestItemArtUrl)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-4 col-md-10">
+                        <input type="submit" value="Delete" class="btn btn-default" />
+                        <button class="btn btn-default">
+                            @Html.ActionLink("Back to List", "Index")
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Restaurant.Models.RestItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 main">
+            <h3 class="page-header">Store Manager</h3>
+            <button class="btn btn-default">
+                @Html.ActionLink("Create New", "Create")
+            </button>            
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Main Menu</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.RestMenu.Name)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                                <td>
+                                    <button class="btn btn-default">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.RestItemId })
+                                    </button>
+                                    <button class="btn btn-default">
+                                        @Html.ActionLink("Details", "Details", new { id = item.RestItemId })
+                                    </button>
+                                    <button class="btn btn-default">
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.RestItemId })
+                                    </button>
+                                </td>
+                            </tr>
+                        }                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
